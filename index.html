@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dance Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="aoCarregarPagina()">
+
+    <header>
+        <div class="header-container">
+            <div class="logo">Dance Academy</div>
+            <nav>
+                <ul>
+                    <li><a href="#apresentacao">Início</a></li>
+                    <li><a href="#modalidades">Modalidades</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="controls">
+                <button class="btn-ctrl" onclick="mudarCor()">Cor de Fundo</button>
+                <button class="btn-ctrl" onclick="modoEscuro()">Modo Escuro / Claro</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="apresentacao" class="hero">
+        <h1>Exprima-se Através da Dança</h1>
+        <p>Aprenda, dance e evolua com os melhores profissionais na Dance Academy. Aulas interativas concebidas para todas as idades e níveis de experiência.</p>
+        
+        <button class="btn-action" onclick="mostrarMensagem()">Saber Mais</button>
+
+        <div class="quote-box">
+            <p id="frase-motivacional">"A dança é a linguagem escondida da alma."</p>
+            <button class="btn-ctrl" onclick="gerarFrase()">Nova Frase</button>
+        </div>
+    </section>
+
+    <section id="modalidades">
+        <h2>As Nossas Modalidades</h2>
+        <div class="grid-cards">
+            <div class="card">
+                <h3>Hip-Hop</h3>
+                <p>Ritmo, energia e expressão urbana. Desenvolva coordenação e estilo único com os nossos instrutores.</p>
+            </div>
+            <div class="card">
+                <h3>Ballet Clássico</h3>
+                <p>A base de toda a dança. Melhore a postura, flexibilidade e elegância através de técnicas clássicas.</p>
+            </div>
+            <div class="card">
+                <h3>Salsa & Bachata</h3>
+                <p>Dança social cheia de ritmo e paixão. Ideal para quem quer divertir-se e aprender a dançar a par.</p>
+            </div>
+            <div class="card">
+                <h3>Contemporânea</h3>
+                <p>Explore o movimento corporal livre, a interpretação e a fluidez do estilo contemporâneo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <h2>Galeria de Fotos</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <svg viewBox="0 0 300 200">
+                    <defs>
+                        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00d2ff"/>
+                            <stop offset="100%" stop-color="#3a7bd5"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#g1)"/>
+                    <circle cx="150" cy="100" r="45" fill="rgba(255,255,255,0.2)" />
+                    <text x="50%" y="55%" text-anchor="middle" fill="white" font-weight="bold" font-size="16">Aula de Hip-Hop</text>
+                </svg>
+                <p>Estúdio Principal</p>
+            </div>
+            <div class="gallery-item">
+                <svg viewBox="0 0 300 200">
+                    <defs>
+                        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#9254de"/>
+                            <stop offset="100%" stop-color="#f759ab"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#g2)"/>
+                    <circle cx="150" cy="100" r="45" fill="rgba(255,255,255,0.2)" />
+                    <text x="50%" y="55%" text-anchor="middle" fill="white" font-weight="bold" font-size="16">Ensaio Geral</text>
+                </svg>
+                <p>Palco do Espetáculo</p>
+            </div>
+            <div class="gallery-item">
+                <svg viewBox="0 0 300 200">
+                    <defs>
+                        <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff7a45"/>
+                            <stop offset="100%" stop-color="#ffec3d"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#g3)"/>
+                    <circle cx="150" cy="100" r="45" fill="rgba(255,255,255,0.2)" />
+                    <text x="50%" y="55%" text-anchor="middle" fill="white" font-weight="bold" font-size="16">Dança a Par</text>
+                </svg>
+                <p>Workshop de Salsa</p>
+            </div>
+            <div class="gallery-item">
+                <svg viewBox="0 0 300 200">
+                    <defs>
+                        <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#36cfc9"/>
+                            <stop offset="100%" stop-color="#73d13d"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#g4)"/>
+                    <circle cx="150" cy="100" r="45" fill="rgba(255,255,255,0.2)" />
+                    <text x="50%" y="55%" text-anchor="middle" fill="white" font-weight="bold" font-size="16">Apresentação</text>
+                </svg>
+                <p>Gala Anual</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Entre em Contacto</h2>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!');">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" required placeholder="O seu nome">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" required placeholder="o.seu.email@exemplo.com">
+            </div>
+            <div class="form-group">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" rows="4" required placeholder="Em que modalidade tem interesse?"></textarea>
+            </div>
+            <button type="submit" class="btn-action" style="width: 100%;">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Dance Academy. Todos os direitos reservados.</p>
+        <div class="footer-info">
+            <span>Rua da Dança, Nº 123 - Lisboa</span>
+            <span class="visit-counter" id="contador">Visitas: 0</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
