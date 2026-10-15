@@ -265,10 +265,22 @@ section h2 {
     border-color: var(--primary-accent);
 }
 
-.gallery-item svg {
+.gallery-item a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.gallery-item img {
     width: 100%;
     height: 190px;
+    object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
 }
 
 .gallery-item p {
@@ -283,75 +295,4 @@ section h2 {
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
     padding: 2.5rem;
-    max-width: 580px;
-    margin: 0 auto;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.form-group {
-    margin-bottom: 1.4rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.9rem 1.1rem;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
-    color: var(--text-main);
-    font-size: 0.95rem;
-    outline: none;
-}
-
-body.light-theme .form-group input,
-body.light-theme .form-group textarea {
-    background: rgba(255, 255, 255, 0.7);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--primary-accent);
-    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
-}
-
-footer {
-    background: rgba(11, 15, 25, 0.85);
-    border-top: 1px solid var(--card-border);
-    text-align: center;
-    padding: 2.5rem 2rem;
-    margin-top: 6rem;
-    backdrop-filter: blur(12px);
-}
-
-body.light-theme footer {
-    background: rgba(240, 244, 249, 0.9);
-}
-
-.footer-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-top: 1.2rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-.visit-counter {
-    background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(146, 84, 222, 0.15));
-    border: 1px solid var(--primary-accent);
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-weight: 700;
-    color: var(--primary-accent);
-}
+    max-width
