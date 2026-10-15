@@ -1,9 +1,9 @@
-function aoCarregarPagina() {
-    alert("Bem-vindo à Dance Academy!");
+// Executa o código assim que a página estiver totalmente carregada
+document.addEventListener("DOMContentLoaded", function () {
     contarVisita();
-    gerarFrase(); // Exibe uma frase diferente assim que abre o site
-    iniciarCarrosselFrases(); // Faz as frases alternarem automaticamente
-}
+    gerarFrase(); // Garante uma frase diferente logo ao abrir/reabrir
+    iniciarCarrosselFrases(); // Mantém as frases a mudar a cada 5 segundos
+});
 
 function mostrarMensagem() {
     alert("Obrigado pela sua visita! Venha experimentar uma aula gratuita.");
@@ -49,15 +49,23 @@ const frases = [
     "O ritmo é a batida do coração transformada em som."
 ];
 
+let ultimaFraseIndex = -1;
+
 function gerarFrase() {
-    const indiceAleatorio = Math.floor(Math.random() * frases.length);
     const elementoFrase = document.getElementById("frase-motivacional");
-    if (elementoFrase) {
-        elementoFrase.innerHTML = '"' + frases[indiceAleatorio] + '"';
-    }
+    if (!elementoFrase) return;
+
+    let indiceAleatorio;
+    // Garante que a nova frase nunca seja igual à que está a mostrar no momento
+    do {
+        indiceAleatorio = Math.floor(Math.random() * frases.length);
+    } while (indiceAleatorio === ultimaFraseIndex && frases.length > 1);
+
+    ultimaFraseIndex = indiceAleatorio;
+    elementoFrase.innerHTML = '"' + frases[indiceAleatorio] + '"';
 }
 
 function iniciarCarrosselFrases() {
-    // Muda a frase automaticamente a cada 5000 milissegundos (5 segundos)
+    // Muda a frase automaticamente a cada 5 segundos
     setInterval(gerarFrase, 5000);
 }
