@@ -296,3 +296,17 @@ section h2 {
     border-radius: var(--radius);
     padding: 2.5rem;
     max-width
+
+.quote-box p {
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-main);
+    margin-bottom: 0;
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out; /* Controla a suavidade da transição */
+}
+
+/* Classe utilizada para fazer o efeito de desvanecer */
+.quote-box p.fade-out {
+    opacity: 0;
+}
