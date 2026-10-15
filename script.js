@@ -1,34 +1,50 @@
-// Executa a troca de frase IMEDIATAMENTE antes de tudo
-function carregarFraseInicial() {
-    const frases = [
-        "A dança é a linguagem escondida da alma.",
-        "Dançar é sonhar com os pés.",
-        "A arte transforma vidas.",
-        "Não tente dançar melhor do que os outros. Tente apenas dançar melhor do que você mesmo.",
-        "A música é a inspiração, a dança é a expressão.",
-        "Os pés dançam o que o coração sente.",
-        "A dança é a poesia do corpo em movimento.",
-        "Quem dança, os seus males espanta.",
-        "Cada passo de dança é um passo em direção à liberdade.",
-        "Na dança não existem erros, apenas novos movimentos.",
-        "Dançar é libertar a energia que habita dentro de si.",
-        "O ritmo é a batida do coração transformada em som."
-    ];
+const frases = [
+    "A dança é a linguagem escondida da alma.",
+    "Dançar é sonhar com os pés.",
+    "A arte transforma vidas.",
+    "Não tente dançar melhor do que os outros. Tente apenas dançar melhor do que você mesmo.",
+    "A música é a inspiração, a dança é a expressão.",
+    "Os pés dançam o que o coração sente.",
+    "A dança é a poesia do corpo em movimento.",
+    "Quem dança, os seus males espanta.",
+    "Cada passo de dança é um passo em direção à liberdade.",
+    "Na dança não existem erros, apenas novos movimentos.",
+    "Dançar é libertar a energia que habita dentro de si.",
+    "O ritmo é a batida do coração transformada em som."
+];
 
+let ultimaFraseIndex = -1;
+
+function trocarFraseComFade() {
     const elementoFrase = document.getElementById("frase-motivacional");
-    if (elementoFrase) {
-        const indiceAleatorio = Math.floor(Math.random() * frases.length);
+    if (!elementoFrase) return;
+
+    // 1. Aplica a classe para fazer o Fade Out (desaparecer)
+    elementoFrase.classList.add("fade-out");
+
+    // 2. Espera 800ms (tempo da animação CSS) para trocar o texto e fazer o Fade In
+    setTimeout(() => {
+        let indiceAleatorio;
+        do {
+            indiceAleatorio = Math.floor(Math.random() * frases.length);
+        } while (indiceAleatorio === ultimaFraseIndex && frases.length > 1);
+
+        ultimaFraseIndex = indiceAleatorio;
         elementoFrase.textContent = '"' + frases[indiceAleatorio] + '"';
-    }
+
+        // Remove a classe para reaparecer (Fade In)
+        elementoFrase.classList.remove("fade-out");
+    }, 800);
 }
 
-// Corre o código assim que o HTML estiver pronto
 document.addEventListener("DOMContentLoaded", function () {
-    carregarFraseInicial(); // Muda a frase no refresh
     contarVisita();
     
-    // Troca automaticamente a cada 5 segundos
-    setInterval(carregarFraseInicial, 5000);
+    // Mostra uma frase inicial imediatamente
+    trocarFraseComFade();
+
+    // Alterna a frase com o efeito de fade a cada 6 segundos
+    setInterval(trocarFraseComFade, 6000);
 });
 
 function mostrarMensagem() {
@@ -58,8 +74,4 @@ function contarVisita() {
     if (elementoContador) {
         elementoContador.textContent = "Visitas: " + visitas;
     }
-}
-
-function gerarFrase() {
-    carregarFraseInicial();
 }
