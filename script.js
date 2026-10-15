@@ -1,8 +1,34 @@
-// Executa o código assim que a página estiver totalmente carregada
+// Executa a troca de frase IMEDIATAMENTE antes de tudo
+function carregarFraseInicial() {
+    const frases = [
+        "A dança é a linguagem escondida da alma.",
+        "Dançar é sonhar com os pés.",
+        "A arte transforma vidas.",
+        "Não tente dançar melhor do que os outros. Tente apenas dançar melhor do que você mesmo.",
+        "A música é a inspiração, a dança é a expressão.",
+        "Os pés dançam o que o coração sente.",
+        "A dança é a poesia do corpo em movimento.",
+        "Quem dança, os seus males espanta.",
+        "Cada passo de dança é um passo em direção à liberdade.",
+        "Na dança não existem erros, apenas novos movimentos.",
+        "Dançar é libertar a energia que habita dentro de si.",
+        "O ritmo é a batida do coração transformada em som."
+    ];
+
+    const elementoFrase = document.getElementById("frase-motivacional");
+    if (elementoFrase) {
+        const indiceAleatorio = Math.floor(Math.random() * frases.length);
+        elementoFrase.textContent = '"' + frases[indiceAleatorio] + '"';
+    }
+}
+
+// Corre o código assim que o HTML estiver pronto
 document.addEventListener("DOMContentLoaded", function () {
+    carregarFraseInicial(); // Muda a frase no refresh
     contarVisita();
-    gerarFrase(); // Garante uma frase diferente logo ao abrir/reabrir
-    iniciarCarrosselFrases(); // Mantém as frases a mudar a cada 5 segundos
+    
+    // Troca automaticamente a cada 5 segundos
+    setInterval(carregarFraseInicial, 5000);
 });
 
 function mostrarMensagem() {
@@ -30,42 +56,10 @@ function contarVisita() {
     localStorage.setItem("contador_visitas", visitas);
     const elementoContador = document.getElementById("contador");
     if (elementoContador) {
-        elementoContador.innerHTML = "Visitas: " + visitas;
+        elementoContador.textContent = "Visitas: " + visitas;
     }
 }
 
-const frases = [
-    "A dança é a linguagem escondida da alma.",
-    "Dançar é sonhar com os pés.",
-    "A arte transforma vidas.",
-    "Não tente dançar melhor do que os outros. Tente apenas dançar melhor do que você mesmo.",
-    "A música é a inspiração, a dança é a expressão.",
-    "Os pés dançam o que o coração sente.",
-    "A dança é a poesia do corpo em movimento.",
-    "Quem dança, os seus males espanta.",
-    "Cada passo de dança é um passo em direção à liberdade.",
-    "Na dança não existem erros, apenas novos movimentos.",
-    "Dançar é libertar a energia que habita dentro de si.",
-    "O ritmo é a batida do coração transformada em som."
-];
-
-let ultimaFraseIndex = -1;
-
 function gerarFrase() {
-    const elementoFrase = document.getElementById("frase-motivacional");
-    if (!elementoFrase) return;
-
-    let indiceAleatorio;
-    // Garante que a nova frase nunca seja igual à que está a mostrar no momento
-    do {
-        indiceAleatorio = Math.floor(Math.random() * frases.length);
-    } while (indiceAleatorio === ultimaFraseIndex && frases.length > 1);
-
-    ultimaFraseIndex = indiceAleatorio;
-    elementoFrase.innerHTML = '"' + frases[indiceAleatorio] + '"';
-}
-
-function iniciarCarrosselFrases() {
-    // Muda a frase automaticamente a cada 5 segundos
-    setInterval(gerarFrase, 5000);
+    carregarFraseInicial();
 }
